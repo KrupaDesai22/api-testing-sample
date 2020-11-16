@@ -24,14 +24,14 @@ test("Validate the posts", async () => {
   let validate = ajv.compile(schema_getAllPosts);
   let valid = validate(responseBody);
 
-  if (valid) console.log("Schema is valid!");
-  else console.log("Invalid: " + ajv.errorsText(validate.errors));
+  //   if (valid) console.log("Schema is valid!");
+  //   else console.log("Invalid: " + ajv.errorsText(validate.errors));
   expectChai(valid).to.be.true; //Fail the test if schema validation fails
 });
 
 test("Validate a single post", async () => {
-  const id = "1"
-  const uri = "/posts/"+id;
+  const id = "1";
+  const uri = "/posts/" + id;
   let responseBody;
   await apiHelper
     .get(url, uri, {}, {})
@@ -39,14 +39,22 @@ test("Validate a single post", async () => {
     .expect((response) => {
       responseBody = response.body;
       assertChai.isNotArray(response.body);
-      //   assertChai(response.body.id).to.equal(1);
-      expectChai(response.body.id+"").to.equal(id);
+      expectChai(response.body.id + "").to.equal(id);
     });
 
   let validate = ajv.compile(schema_getSinglePost);
   let valid = validate(responseBody);
-
-  if (valid) console.log("Schema is valid!");
-  else console.log("Invalid: " + ajv.errorsText(validate.errors));
   expectChai(valid).to.be.true; //Fail the test if schema validation fails
+});
+
+test("Validate the bad url", async () => {
+  const uri = "/invalidposts";
+  await apiHelper
+    .get(url, uri, {}, {})
+    .expect(404)
+    .expect((response) => {
+      console.log("response.body"); 
+      console.log(response.body); //Printing on console to get on HTML report
+      //There is no request body to print
+    });
 });

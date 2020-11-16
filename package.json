@@ -9,13 +9,15 @@
   "author": "Shridhar Kalagi",
   "license": "ISC",
   "jest": {
-    "verbose": true,
+    "verbose": false,
     "reporters": [
       "default",
       [
         "./node_modules/jest-html-reporter",
         {
-          "pageTitle": "Test Report"
+          "pageTitle": "Test Report",
+          "includeFailureMsg": true,
+          "includeConsoleLog": true
         }
       ]
     ]
