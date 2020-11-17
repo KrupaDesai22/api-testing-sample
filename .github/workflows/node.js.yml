@@ -25,8 +25,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn && yarn test
-    - name: Upload artifact 
     - uses: actions/upload-artifact@v2
       with:
         name: my-artifact
         path: test-report.html
+      if: always()
