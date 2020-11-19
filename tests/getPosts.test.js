@@ -23,9 +23,6 @@ test("Validate the posts", async () => {
 
   let validate = ajv.compile(schema_getAllPosts);
   let valid = validate(responseBody);
-
-  //   if (valid) console.log("Schema is valid!");
-  //   else console.log("Invalid: " + ajv.errorsText(validate.errors));
   expectChai(valid).to.be.true; //Fail the test if schema validation fails
 });
 
@@ -53,7 +50,7 @@ test("Validate the bad url", async () => {
     .get(url, uri, {}, {})
     .expect(404)
     .expect((response) => {
-      console.log("response.body"); 
+      console.log("response.body");
       console.log(response.body); //Printing on console to get on HTML report
       //There is no request body to print
     });
