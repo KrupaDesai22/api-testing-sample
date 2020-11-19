@@ -8,7 +8,7 @@ import Ajv from "ajv";
 const url = "https://jsonplaceholder.typicode.com";
 let ajv = new Ajv({ allErrors: true });
 
-test("Create Post", async () => {
+test("Update Post", async () => {
   const uri = "/posts/1";
   let responseBody;
   let requestBody = {
