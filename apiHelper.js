@@ -1,6 +1,11 @@
 const supertest = require("supertest");
 
 const get = (url, uri, querypParams, headers) => {
+  headers = {
+    ...headers,
+    "Content-Type": "application/json",
+    charset: "UTF-8",
+  };
   if (typeof url == undefined || url == null) {
     throw new Error("URL cannot be null");
   }
@@ -17,6 +22,11 @@ const get = (url, uri, querypParams, headers) => {
   return api.get(uri).query(querypParams).set(headers);
 };
 const post = (url, uri, body, headers) => {
+  headers = {
+    ...headers,
+    "Content-Type": "application/json",
+    charset: "UTF-8",
+  };
   if (typeof url == undefined || url == null) {
     throw new Error("URL cannot be null");
   }
@@ -56,6 +66,11 @@ const put = (url, uri, body, headers) => {
 };
 
 const del = (url, uri, body, headers) => {
+  headers = {
+    ...headers,
+    "Content-Type": "application/json",
+    charset: "UTF-8",
+  };
   if (typeof url == undefined || url == null) {
     throw new Error("URL cannot be null");
   }
