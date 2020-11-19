@@ -1,9 +1,9 @@
-import apiHelper from "./apiHelper";
+import apiHelper from "../apiHelper";
 import chai from "chai";
 const expectChai = chai.expect;
 const assertChai = chai.assert;
-import schema_getAllPosts from "./schemas/getAllPosts.json";
-import schema_getSinglePost from "./schemas/getSinglePost.json";
+import schema_getAllPosts from "../schemas/getAllPosts.json";
+import schema_getSinglePost from "../schemas/getSinglePost.json";
 
 import Ajv from "ajv";
 
